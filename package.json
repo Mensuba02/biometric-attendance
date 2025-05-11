@@ -2,13 +2,16 @@
   "name": "google",
   "private": true,
   "version": "0.0.0",
+  "main ": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+  "start": "node index.js",
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "lint": "eslint ."
   },
+
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
