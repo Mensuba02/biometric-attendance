@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f2f2f2, #e0f7fa); /* Gradient background */
+      color: #333;
+    }
+
+    header {
+      background-color: #00796b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative; /* Needed for positioning the button inside */
+    }
+
+    .top-right-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background-color: white;
+      color: #00796b;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Attendance Page</h2>
+    <!-- Updated the button to be wrapped inside <a> for proper navigation -->
+    <a href="details.html"><button class="top-right-button">Details</button></a>
+  </header>
+  <main>
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRlaZiszrcoJJp2-PzJdPTg3Wm7dw9KvnUhm3g4FLLSWN-qTDHhGn5wFnNUx4UamNqyGCQobDuDBTpa/pubhtml?widget=true&amp;headers=false"></iframe>
+  </main>
+</body>
+</html>

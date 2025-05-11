@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://d1agmp9y4cki1i.cloudfront.net/images/20230717/1%20%282%29%20%281%29.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px;
+    }
+
+    .quote-box {
+      color: white;
+      max-width: 50%;
+      font-size: 2.5rem;
+      line-height: 1.6;
+      font-weight: 500;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .login-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 15px;
+      padding: 0 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .toggle {
+      margin-top: 10px;
+      text-align: center;
+      color: #00796b;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left side quote box -->
+  <div class="quote-box">
+    <h1>BIOMETRIC ATTENDANCE SYSTEM</h1>
+    
+  </div>
+
+  <!-- Right side login box -->
+  <div class="login-box">
+    <h2 id="formTitle">Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="handleAuth()">Login</button>
+    <div class="toggle" onclick="toggleMode()">Don't have an account? Sign up</div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function toggleMode() {
+      isLogin = !isLogin;
+      document.getElementById('formTitle').textContent = isLogin ? 'Login' : 'Sign Up';
+      document.querySelector('button').textContent = isLogin ? 'Login' : 'Sign Up';
+      document.querySelector('.toggle').textContent = isLogin
+        ? "Don't have an account? Sign up"
+        : "Already have an account? Login";
+    }
+
+    function handleAuth() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!username || !password) {
+        alert("Please enter username and password.");
+        return;
+      }
+
+      if (isLogin) {
+        const stored = JSON.parse(localStorage.getItem("authUser"));
+        if (stored && stored.username === username && stored.password === password) {
+          localStorage.setItem("isLoggedIn", "true");
+          window.location.href = "index.html";
+        } else {
+          alert("Invalid credentials!");
+        }
+      } else {
+        localStorage.setItem("authUser", JSON.stringify({ username, password }));
+        alert("Sign up successful! Please log in.");
+        toggleMode();
+      }
+    }
+
+    // Redirect if already logged in
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
